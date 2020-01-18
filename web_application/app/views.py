@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from .model.inference import label
 
 
 main = Blueprint('main', __name__)
@@ -16,4 +17,4 @@ def home():
 
 		image = request.files['image'].read()
 
-		return render_template('result.html', image=image)
+		return render_template('result.html', image=label(image))
