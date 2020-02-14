@@ -8,10 +8,11 @@ from pathlib import Path
 
 
 transform = transforms.Compose([
-    	transforms.CenterCrop(224),
-    	transforms.ToTensor(),
-    	transforms.Normalize([.5,.5,.5], [.5,.5,.5])
-    ])
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+])
 
 checkpoint = Path('app/model/skin_cancer_model.pt')
 model = models.densenet201(pretrained=True)
@@ -29,6 +30,7 @@ label_title = ["melanoma", "nevus", "seborrheic_keratosis"]
 def label(bytes):
 	tensor = transform(Image.open(io.BytesIO(bytes))).unsqueeze(0)
 	output = model(tensor)
+	print(output)
 	pred = output.data.max(1, keepdim=True)[1]
 
 	return label_title[pred.item()]
