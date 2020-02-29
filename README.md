@@ -1,10 +1,11 @@
 [//]: # (Image References)
 
-[image1]: ./images/skin_disease_classes.png "Skin Disease Classes"
+<!--[image1]: ./images/skin_disease_classes.png "Skin Disease Classes"-->
+[image1]: ./images/index.png "Lesion Images"
 
-# Dermatologist Model
+# Dermatologist AI
 
-![Skin Disease Classes][image1]
+![Lesion Images][image1]
 
 ## Overview / Usage
 
