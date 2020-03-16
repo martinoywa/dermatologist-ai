@@ -1,5 +1,5 @@
 from flask import Flask
-from .views import main
+from .api import main
 
 
 app = Flask(__name__)
