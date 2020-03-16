@@ -10,11 +10,12 @@ def home():
 	if request.method == 'GET':
 		return render_template('index.html')
 	else:
-		print(request.files)
+		print(request.files['image'])
 
 		if 'image' not in request.files:
 			print('No file uploaded')
 
 		image = request.files['image'].read()
+		#print(image)
 
-		return render_template('result.html', image=label(image))
+		return render_template('result.html', prediction=label(image), image=image)
