@@ -4,7 +4,9 @@
 	<title>Dermatologist AI</title>
 </head>
 <body>
-	<img src="{{ url_for('static', filename='/uploads/upload.png') }}"" alt="{{ prediction }}">
-	<p>Label: {{ prediction }}</p>
+	<img src="{{ url_for('static', filename='/uploads/upload.png') }}" width="300" height="200" alt="{{ prediction }}">
+	<!--p>Label: {{ prediction }}</p-->
+	<br />
+	{{ image }}
 </body>
 </html>
