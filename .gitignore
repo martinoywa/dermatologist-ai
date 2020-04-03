@@ -3,3 +3,5 @@
 *.pt
 data/
 __pycache__/
+venv/
+uploads/
