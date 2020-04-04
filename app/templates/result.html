@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<form method=POST enctype=multipart/form-data>
-		<input type="file" name="image">
-		<button type="submit">Upload Image</button>
-	</form>
 	<hr />
-	<img src="{{ url_for('static', filename='uploads/'+filename) }}">
-	<h1>{{ filename }}</h1>
-	<br />
-	{{ image }}
+	<div class="text-center">
+		<figure class="figure">
+	  	<img width="500" height="500" src="{{ url_for('static', filename='uploads/'+filename) }}" class="figure-img img-fluid rounded mx-auto d-block img-thumbnail" alt="...">
+	  	<figcaption class="figure-caption text-right">Prediction: {{ filename }}</figcaption>
+		</figure>
+	</div>
 {% endblock %}
