@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Dermatologist AI</title>
-</head>
-<body>
-	<img src="{{ url_for('static', filename='/uploads/upload.png') }}" width="300" height="200" alt="{{ prediction }}">
-	<!--p>Label: {{ prediction }}</p-->
+{% extends 'base.html' %}
+
+{% block content %}
+	<form method=POST enctype=multipart/form-data>
+		<input type="file" name="image">
+		<button type="submit">Upload Image</button>
+	</form>
+	<hr />
+	<img src="{{ url_for('static', filename='uploads/'+filename) }}">
+	<h1>{{ filename }}</h1>
 	<br />
 	{{ image }}
-</body>
-</html>
+{% endblock %}
