@@ -11,6 +11,9 @@ app = Flask(__name__)
 app.config["IMAGE_UPLOADS"] = "app/static/uploads/"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG"]
 
+if 'uploads' not in os.listdir('app/static'):
+	os.mkdir(app.config["IMAGE_UPLOADS"])	# make the uploads folder
+
 def allowed_image(filename):
 	if "." not in filename:
 		return False
@@ -23,31 +26,24 @@ def allowed_image(filename):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+	if request.method == "GET":
+		return render_template("index.html")
+
 	if request.method == "POST":
-
 		if request.files:
-
 			image = request.files["image"]
 
-			if image.filename == "":
-				print("No filename")
+			if image.filename == "":	# No filename
 				return redirect(request.url)
 
 			if allowed_image(image.filename):
 				filename = secure_filename(image.filename)
-
 				image.save(os.path.join(app.config["IMAGE_UPLOADS"],
-							filename))	# save upload
-
-				print("Image Saved")
-
+							filename))	# File saved
+			else:	# File not allowed
 				return redirect(request.url)
 
-			else:
-				print("File not allowed")
-				return redirect(request.url)
-
-	return render_template("index.html")
+	return render_template("result.html", filename=filename)
 
 
 if __name__ == "__main__":
