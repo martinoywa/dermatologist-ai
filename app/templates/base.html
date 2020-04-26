@@ -2,9 +2,34 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <title>Dermatologist AI</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h1 class="display-4">Dermatologist AI</h1>
+      <hr class="my-4" />
+      <p class="lead">
+        It utilises Deep Learning to visually diagnose melanoma,
+        the deadliest form of skin cancer. In particular, the algorithm will distinguish
+        this malignant skin tumor from two types of benign lesions (nevi and seborrheic keratoses).
+      </p>
+  	</div>
+
+    <div class="container form-group">
+  		<form method=POST enctype=multipart/form-data>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div>
+        </div>
+  			<button type="submit" class="btn btn-primary mb-2">Send Image</button>
+  		</form>
+  	</div>
     {% block content %}{% endblock %}
   </body>
 </html>
