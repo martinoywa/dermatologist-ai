@@ -1,7 +1,7 @@
 asgiref==3.2.7
 astroid==2.3.3
 click==7.1.1
-Django==3.0.5
+Django==3.0.7
 Flask==1.1.1
 image==1.5.28
 isort==4.3.21
